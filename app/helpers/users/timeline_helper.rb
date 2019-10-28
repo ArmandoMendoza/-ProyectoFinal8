@@ -1,0 +1,2 @@
+module Users::TimelineHelper
+end

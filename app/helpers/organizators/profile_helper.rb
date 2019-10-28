@@ -1,0 +1,2 @@
+module Organizators::ProfileHelper
+end

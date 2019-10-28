@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-sm-3">
+    <% if current_user.profile.photo_url %>
+    <p><%= image_tag @profile.photo_url, class: "avatar", size: "185x185" %></p>
+    <% end %>
+    <h3><%= current_user.name %> <%= current_user.lastname%></h3>
+
+    <%= link_to "Regresar a tus pautas", users_timeline_path, class: "btn btn-secondary" %>
+
+  </div>
+
+  <div class="col-sm-9">
+    <table class="table table-sm"
+      <tbody>
+        <tr class="thead-light">
+          <th class="celda bg-warning"> Email</th>
+            <td > <%= current_user.email %></td>
+        </tr>
+
+        <tr class="thead-light">
+          <th class="celda"> Teléfono</th>
+            <td> <%= @profile.phone %></td>
+        </tr>
+
+        <% if current_user.influencer?%>
+        <tr class="thead-light">
+          <th class="celda"> Red Social</th>
+            <td> <%= @profile.social_network %></td>
+          </tr>
+        <tr class="thead-light">
+          <th class="celda"> Dirección Red Social</th>
+            <td> <a href="<%=@profile.social_network_url %>" target="_blank"><%=@profile.social_network_url %></a></td>
+        </tr>
+        <%end%>
+
+        <%if current_user.tradicional? %>
+        <tr class="thead-light">
+          <th class="celda"> Medio donde trabaja</th>
+            <td> <%= @profile.media_name %></td>
+        </tr>
+        <%end %>
+
+
+      </tbody>
+    </table>
+    <div class="row text-justify">
+      <div class="col-sm-10">
+      <p><%= sanitize @profile.description %></p>
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>

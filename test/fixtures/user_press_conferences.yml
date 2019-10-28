@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  press_conference: one
+  status: 1
+
+two:
+  user: two
+  press_conference: two
+  status: 1

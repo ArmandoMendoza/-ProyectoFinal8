@@ -1,0 +1,115 @@
+
+
+<div class="row">
+  <div class="col-sm-4">
+    <% if current_user.profile.photo_url %>
+    <p><%= image_tag current_user.profile.photo_url, class: "avatar", size: "185x185" %></p>
+    <% end %>
+    <h4><%= current_user.name %> <%= current_user.lastname %></h4>
+    <p><%= current_user.email %></p>
+    <p><%= link_to "Regresar a tus pautas", users_timeline_path, class: "btn btn-secondary" %></p>
+
+  </div>
+
+  <div class="col-sm-8">
+
+    <%= form_for current_user, url: users_profile_path do |form| %>
+      <% if current_user.errors.any? %>
+          <% current_user.errors.full_messages.each do |msg| %>
+          <%= msg %>
+          <% end %>
+      <% end %>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <div class="control-label ">
+            <%= form.label :name, "Nombre" %>
+            <%= form.text_field :name, class: "form-control form-control-sm" %>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <div class="control-label ">
+            <%= form.label :lastname, "Apellido" %>
+            <%= form.text_field :lastname, class: "form-control form-control-sm" %>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+
+      <%= form.fields_for :profile, current_user.profile do |profile_form| %>
+
+    <div class="form-group">
+      <div class="control-label">
+        <%= profile_form.label :photo, "Sube una foto"%>
+        <%= profile_form.file_field :photo%>
+
+      </div>
+    </div>
+
+<div class="row">
+  <div class="col">
+    <div class="form-group">
+      <div class="control-label">
+        <%= profile_form.label :phone, "Teléfono" %>
+        <%= profile_form.text_field :phone, class: "form-control form-control-sm"%>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="col">
+
+        <div class= "form-group">
+          <div class="control-label">
+            <% if current_user.influencer? %>
+            <%= profile_form.label :social_network, "Nombre de tu Red Social" %>
+            <%= profile_form.text_field :social_network, class: "form-control form-control-sm"%>
+            <% end  %>
+          </div>
+        </div>
+
+  </div>
+</div>
+
+    <div class= "form-group">
+      <div class="control-label">
+        <% if current_user.influencer? %>
+        <%= profile_form.label :social_network_url, "URL de tu Red Social" %>
+        <%= profile_form.text_field :social_network_url, class: "form-control form-control-sm"%>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="control-label">
+        <% if current_user.tradicional? %>
+        <%= profile_form.label :media_name, "¿En qué medio trabajas?" %>
+        <%= profile_form.text_field :media_name, class: "form-control "%>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="control-lavel">
+        <%= profile_form.label :description, "Copia tu CV" %>
+        <%= profile_form.hidden_field :description, class: "form-control form-control-sm", id: :description_editor%>
+          <trix-editor class="trix-content" input="description_editor" > </trix-editor>
+
+      </div>
+
+    </div>
+      <% end %>
+
+
+      <div class="actions">
+        <%= form.submit "Actualziar", class: "btn btn-success" %>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>

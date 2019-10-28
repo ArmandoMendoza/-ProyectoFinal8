@@ -1,0 +1,39 @@
+.form_layout {
+  width: 50%;
+  margin: auto;
+}
+
+.tableSize {
+  font-size: 14px;
+
+}
+
+
+.sombra_box {
+  box-shadow: 2px 2px 5px #999;
+}
+
+th.celda {
+  width: 25%;
+}
+
+.avatar {
+  border-radius: 5%;
+}
+
+.trix-content {
+		height: 150px !important;
+		max-height: 150px !important;
+	  overflow-y: auto !important;
+	}
+
+  .navbar {
+   min-height: 80px;
+ }
+
+/* .back_home {
+    background-image: url("conferencia.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 300px;
+  } */
